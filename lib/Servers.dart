@@ -10,7 +10,7 @@ String hostip = '';
 String previousip = '';
 String _baseUrl =
     'http://$hostip:5000'; // Replace with your Raspberry Pi IP and server port
-double currentspeed = 0;
+double Scurrentspeed = 0;
 String previousD = '';
 int status = 0;
 
@@ -28,7 +28,7 @@ void changeServerStatus(int value) {
 
 int setValues(double speed, String hostipp) {
   hostip = hostipp;
-  currentspeed = speed;
+  Scurrentspeed = speed;
   return 1;
 }
 
@@ -36,7 +36,7 @@ void sendCommands(String direction) async {
   if (previousD != direction) {
     previousD = direction;
     final response = await http.get(
-        Uri.parse('$_baseUrl/control?command=$direction&speed=$currentspeed'));
+        Uri.parse('$_baseUrl/control?command=$direction&speed=$Scurrentspeed'));
     print(response.body);
     if (response.statusCode == 200) {
       print('Command sent: $direction');

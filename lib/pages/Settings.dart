@@ -21,6 +21,7 @@ class _SettingsState extends State<Settings> {
     TextEditingController _textEditingController = TextEditingController(text: currentip);
     var submitData = ()async{
       previousip = hostip;
+      Scurrentspeed = currentspeed;
       if(previousip != hostip) {
         await stopServer();
         changeServerStatus(0);
